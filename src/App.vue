@@ -1,78 +1,19 @@
 <template>
-  <div>
-    <h1> hello, {{ msg }} </h1>
-    <input type="text" v-model="val" @keypress.enter="addTodo">
-    <button @click="addTodo">增加</button>
-    <button @click="clearTodo" v-if="doneCount!=0">清除</button>
-    <ul>
-      <li v-for="(todo, index) in todos" :key="index">
-        <input type="checkbox" v-model="todo.done" >
-        {{ todo.title }}
-      </li>
-      <div>
-        <input type="checkbox" v-model="allDone">全选
-      </div>
-      <div>
-        <!--强行在DIV中使用JS代码可以实现，但是丑，而且不好管理-->
-        共计事件：{{ todos.length }}
-        已完成：{{ doneCount }}
-        未完成：{{ todoCount }}
-      </div>
-    </ul>
-    
-  </div> 
+<div>
+  <h1>{{ num }}</h1>
+  <RateStars :value="3" @update="notice">电影评分</RateStars>
+  <br>
+  <RateStars :value="2" @update="notice">课程评分</RateStars>
+  <!-- <TodoList title="Alpha" itemKey="todo_Nate"></TodoList>
+  <TodoList title="Bravo" itemKey="todo_Nora"></TodoList> -->
+  
+</div>
 </template>
-
-<script>
-import { defineComponent } from "vue";
-export default defineComponent({
-  data(){
-    return {
-      msg: 'Tuo',
-      todos:localStorage.getItem('todos')?JSON.parse(localStorage.getItem('todos')):
-      [{title:"吃早饭",done:true},
-      {title:"喝咖啡",done:true},
-      {title:"记单词",done:true}],
-    }
-  },watch:{
-      todos:{
-        handler(){
-          localStorage.setItem('todos',JSON.stringify(this.todos))
-        },
-        deep:true,
-        immediate:true
-      }
-  },
-  computed:{
-    doneCount(){
-      return this.todos.filter(v=>v.done==true).length
-    },
-    todoCount(){
-      return  this.todos.filter(v=>v.done==false).length
-    },
-    allDone:{
-        get(){
-          return  this.doneCount === this.todos.length
-        },
-        set(value){
-          this.todos.forEach(todo => {
-            todo.done = value;
-          });
-        }
-    }
-  },
-  methods: {
-    addTodo() {
-      if (this.val !== '') {
-        this.todos.push({title:this.val,done:false})
-        this.val = '';
-      }
-    },clearTodo(){
-      this.todos = this.todos.filter(v=>v.done===false)
-    }
+<script setup>
+  import TodoList from './components/TodoList.vue'
+  import RateStars from './components/RateStars.vue'
+  const num =1;
+  function  notice(val) {
+    console.log(val);
   }
-})
 </script>
-
-<style>
-</style>
