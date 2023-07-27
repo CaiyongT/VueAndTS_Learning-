@@ -17,6 +17,15 @@ let obj:Course = {
     students:['Tuo','Chen']
 }
 console.log(obj);
+
+let w:Window = window
+w.open
+
+const ele:HTMLElement = document.createElement('div')
+
+ele.addEventListener('click',function(e:MouseEvent){
+
+},false)
 // //TS自带类型推导
 // //但是也可以发电，使用Any类型
 // let anyArg:any
