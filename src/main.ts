@@ -3,29 +3,30 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import "./main.css"
-
-console.log(import.meta.env.VITE_NAME)
-createApp(App).mount('#app')
+import router from './router'
+const app = createApp(App);
+app.use(router)
+app.mount('#app')
 //基础入门
 //封装起来
-import  type {Course} from './types/main'
+// import  type {Course} from './types/main'
 
-let obj:Course = {
-    name:"bilibili",
-    price:400,
-    isOnline:false,
-    students:['Tuo','Chen']
-}
-console.log(obj);
+// let obj:Course = {
+//     name:"bilibili",
+//     price:400,
+//     isOnline:false,
+//     students:['Tuo','Chen']
+// }
+// console.log(obj);
 
-let w:Window = window
-w.open
+// let w:Window = window
+// w.open
 
-const ele:HTMLElement = document.createElement('div')
+// const ele:HTMLElement = document.createElement('div')
 
-ele.addEventListener('click',function(e:MouseEvent){
+// ele.addEventListener('click',function(e:MouseEvent){
 
-},false)
+// },false)
 // //TS自带类型推导
 // //但是也可以发电，使用Any类型
 // let anyArg:any

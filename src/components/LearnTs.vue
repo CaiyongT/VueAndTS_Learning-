@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/require-v-for-key -->
 <template>
     <slot>{{ title }}:{{ price }}</slot>
     <input ref="inputs" type="text" v-model="val">

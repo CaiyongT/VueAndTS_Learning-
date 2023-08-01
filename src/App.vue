@@ -1,28 +1,24 @@
 <template>
 <div>
-  <h1>{{ num }}</h1>
-  <RateStars :value="3" @update="notice">电影评分</RateStars>
-  <br>
-  <RateStars :value="2" @update="notice">课程评分</RateStars>
-  <img :src="Logo" alt="">
-  <!-- <TodoList title="Alpha" itemKey="todo_Nate"></TodoList>
-  <TodoList title="Bravo" itemKey="todo_Nora"></TodoList> -->
-  <LearnTs :title="114514" :price="1919810"></LearnTs>
+  <!--项目骨架-->
+  <h1>Header</h1>
+  <div>
+    <router-link to="/">首页</router-link>||
+    <router-link to="/Login">登录</router-link>||
+    <router-link to="/About">关于</router-link>||
+    <router-link to="/Video/video114514">视频114</router-link>||
+    <router-link to="/Video/video1919810">视频1919</router-link>||
+  </div>
+  <router-view></router-view>
+  <div>footer</div>
 </div>
 </template>
 <script setup>
-  import Logo from './assets/logo.svg'
-  import TodoList from './components/TodoList.vue'
-  import RateStars from './components/RateStars.vue'
-  import LearnTs from './components/LearnTs.vue'
-  const num =1;
-  function  notice(val) {
-    console.log(val);
-  }
-  
+
+
+
 </script>
 <style lang="scss">
-  $primary-color:red;
-  $font-size:20px;
+
   
 </style>
